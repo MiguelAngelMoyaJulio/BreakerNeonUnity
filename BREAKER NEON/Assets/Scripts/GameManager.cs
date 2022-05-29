@@ -12,8 +12,8 @@ public class GameManager : MonoBehaviour
     private static int LOSE_WIN_SCENE = 1;
     private static int LEVEL_ONE_SCENE = 3;
     private bool resetOneTime;
-    [SerializeField] GameObject canvasPause;
-    private bool statusPause;
+    // [SerializeField] GameObject canvasPause;
+    // private bool statusPause;
 
     private void Awake()
     {
@@ -33,7 +33,7 @@ public class GameManager : MonoBehaviour
         RestoreBallPosition();
         FinalScore();
         ResetValues();
-        controlPause();
+        // controlPause();
     }
 
     private void RestoreBallPosition()
@@ -93,27 +93,27 @@ public class GameManager : MonoBehaviour
         textScore.GetComponent<TextMeshProUGUI>().text = "";
         textLives.GetComponent<TextMeshProUGUI>().text = "";
     }
-
-
-    private void controlPause()
-    {
-        GameObject audio = GameObject.Find("music");
-
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            audio.GetComponent<AudioSource>().Pause();
-            canvasPause.SetActive(true);
-            Time.timeScale = 0f;
-            statusPause = true;
-        }
-        else if (Input.GetKeyDown(KeyCode.E) && statusPause)
-        {
-            audio.GetComponent<AudioSource>().Play();
-            canvasPause.SetActive(false);
-            Time.timeScale = 1f;
-            statusPause = false;
-        }
-    }
+    
+    // funciona si tengo otro canvas dentro del gamemanager
+    // private void controlPause()
+    // {
+    //     GameObject audio = GameObject.Find("music");
+    //
+    //     if (Input.GetKeyDown(KeyCode.Q))
+    //     {
+    //         audio.GetComponent<AudioSource>().Pause();
+    //         canvasPause.SetActive(true);
+    //         Time.timeScale = 0f;
+    //         statusPause = true;
+    //     }
+    //     else if (Input.GetKeyDown(KeyCode.E) && statusPause)
+    //     {
+    //         audio.GetComponent<AudioSource>().Play();
+    //         canvasPause.SetActive(false);
+    //         Time.timeScale = 1f;
+    //         statusPause = false;
+    //     }
+    // }
 
     /**
      * constructors

@@ -19,7 +19,7 @@ public class Ball : MonoBehaviour
     private void Start()
     {
         // the movement of the ball take 1 second to start
-        Invoke(nameof(randomDirection), 1f);
+        Invoke(nameof(randomDirection), 0.5f);
     }
     
     private void randomDirection()

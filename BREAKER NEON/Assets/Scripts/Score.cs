@@ -8,8 +8,6 @@ public class Score : MonoBehaviour
     private TextMeshProUGUI scoreText;
     private int totalScore = 0;
     private GameManager gameManager;
-    private bool resetScore;
-    private static int LEVEL_ONE_SCENE = 3;
 
     private void Awake()
     {
