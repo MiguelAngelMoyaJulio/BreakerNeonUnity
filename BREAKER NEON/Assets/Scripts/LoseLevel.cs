@@ -9,6 +9,8 @@ public class LoseLevel : MonoBehaviour
     private Health life;
     private Ball ball;
     private int amountDecrease = 1;
+    private static float TIME_CHANGE_LEVEL = 0.5f;
+    private static float EFFECT_DURATION = 0.2f;
     [SerializeField] GameObject effectLose;
     // [SerializeField] GameObject fadeTransition;
 
@@ -28,9 +30,7 @@ private void Awake()
             StartCoroutine(effectDuration(effectLose));
             if (life.getTotalLife() <= 0)
             {
-                // effectLose.SetActive(false);
                 StartCoroutine(fadeEffect(1));
-                SceneManager.LoadScene("LOSE-WIN");
             }
         }
     }
@@ -47,14 +47,13 @@ private void Awake()
 
     IEnumerator effectDuration(GameObject effect)
     {
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(EFFECT_DURATION);
         effect.SetActive(false);
     }
     
     IEnumerator fadeEffect(int currenScene)
     {
-        // Instantiate(fadeTransition,transform.position,Quaternion.identity);
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(TIME_CHANGE_LEVEL);
         SceneManager.LoadScene(currenScene);
     }
 }

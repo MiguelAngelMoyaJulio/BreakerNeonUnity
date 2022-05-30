@@ -11,6 +11,7 @@ public class BlockLoad : MonoBehaviour
     private GameManager gameManager;
     private static int LAST_LEVEL = 7;
     private static int LOSE_WIN_LEVEL = 1;
+    private static float TIME_CHANGE_LEVEL = 0.5f;
     [SerializeField] GameObject fadeTransition;
 
     private void Awake()
@@ -55,7 +56,7 @@ public class BlockLoad : MonoBehaviour
     IEnumerator fadeEffect(int currenScene)
     {
         Instantiate(fadeTransition,transform.position,Quaternion.identity);
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(TIME_CHANGE_LEVEL);
         SceneManager.LoadScene(currenScene);
     }
 }
