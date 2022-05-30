@@ -9,7 +9,7 @@ public class BlockLoad : MonoBehaviour
 {
     public int amountBlock;
     private GameManager gameManager;
-    private static int LAST_LEVEL = 4;
+    private static int LAST_LEVEL = 7;
 
     private void Awake()
     {
