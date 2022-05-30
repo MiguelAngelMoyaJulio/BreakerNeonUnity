@@ -10,6 +10,8 @@ public class BlockLoad : MonoBehaviour
     public int amountBlock;
     private GameManager gameManager;
     private static int LAST_LEVEL = 7;
+    private static int LOSE_WIN_LEVEL = 1;
+    [SerializeField] GameObject fadeTransition;
 
     private void Awake()
     {
@@ -39,12 +41,21 @@ public class BlockLoad : MonoBehaviour
             if (nextLevel < LAST_LEVEL)
             {
                 nextLevel++;
-                SceneManager.LoadScene(nextLevel);
+                StartCoroutine(fadeEffect(nextLevel));
+                // SceneManager.LoadScene(nextLevel);
             }
             else
             {
-                SceneManager.LoadScene("LOSE-WIN");
+                StartCoroutine(fadeEffect(LOSE_WIN_LEVEL));
+                // SceneManager.LoadScene("LOSE-WIN");
             }
         }
+    }
+
+    IEnumerator fadeEffect(int currenScene)
+    {
+        Instantiate(fadeTransition,transform.position,Quaternion.identity);
+        yield return new WaitForSeconds(1);
+        SceneManager.LoadScene(currenScene);
     }
 }

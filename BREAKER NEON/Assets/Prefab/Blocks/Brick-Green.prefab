@@ -99,6 +99,8 @@ MonoBehaviour:
   scoreBlock: 65
   deadEffect: {fileID: 1281838194041742531, guid: f0573f0c77e66114c937d10158db1cf3,
     type: 3}
+  soundDead: {fileID: 8584193413581748104, guid: 977825f48b18151429259bcc8cb1c94e,
+    type: 3}
 --- !u!61 &7978252507774663965
 BoxCollider2D:
   m_ObjectHideFlags: 0

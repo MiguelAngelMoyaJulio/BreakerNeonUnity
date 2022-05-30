@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Block : MonoBehaviour
 {
@@ -8,6 +7,7 @@ public class Block : MonoBehaviour
     [SerializeField] int scoreBlock = 0;
     private Score scoreManager;
     [SerializeField] GameObject deadEffect;
+    [SerializeField] GameObject soundDead; 
 
     private void Awake()
     {
@@ -25,11 +25,13 @@ public class Block : MonoBehaviour
         this.health--;
         if (this.health <= 0)
         {
-            Instantiate(deadEffect, transform.position, transform.rotation);
+            Instantiate(deadEffect, transform.position, Quaternion.identity);
             scoreManager.incrementScore(scoreBlock);
             blockLoad.blocksSubstract();
+            Instantiate(soundDead, transform.position,Quaternion.identity);
             Destroy(this.gameObject);
         }
+       
     }
 
     private void OnCollisionEnter2D(Collision2D col)

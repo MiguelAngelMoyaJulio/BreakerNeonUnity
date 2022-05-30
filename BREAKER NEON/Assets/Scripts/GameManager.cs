@@ -77,7 +77,6 @@ public class GameManager : MonoBehaviour
                 livesCanvas.text = "Lives";
                 ScoreNumberCanvas.text = this.finalScore.ToString();
                 LivesNumberCanvas.text = this.lives.ToString();
-                Debug.Log("una sola vez");
             }
         }
     }
