@@ -96,6 +96,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 2
+  scoreBlock: 45
   deadEffect: {fileID: 9060227961441666346, guid: 8d697df46a9bc6545b1c2cb3197b1c18,
     type: 3}
 --- !u!61 &5823199078303548815

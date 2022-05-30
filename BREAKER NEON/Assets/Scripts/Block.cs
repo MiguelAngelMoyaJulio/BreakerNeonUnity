@@ -5,7 +5,7 @@ public class Block : MonoBehaviour
 {
     [SerializeField] private int health = 0;
     private BlockLoad blockLoad;
-    private int scoreBlock = 25;
+    [SerializeField] int scoreBlock = 0;
     private Score scoreManager;
     [SerializeField] GameObject deadEffect;
 
