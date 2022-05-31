@@ -12,9 +12,9 @@ public class BlockLoad : MonoBehaviour
     private Ball ball;
     private static int LAST_LEVEL = 7;
     private static int LOSE_WIN_LEVEL = 1;
-    private static float TIME_CHANGE_LEVEL = 1f;
+    private static float TIME_CHANGE_LEVEL = 0.4f;
 
-    [SerializeField] GameObject fadeTransition;
+    // [SerializeField] GameObject fadeTransition;
 
     private void Awake()
     {
@@ -60,9 +60,9 @@ public class BlockLoad : MonoBehaviour
     {
         ball.freezeBall();
         // Instantiate(fadeTransition,transform.position,Quaternion.identity);
-        fadeTransition.GetComponent<Animator>().SetBool("fade", true);
+        // fadeTransition.GetComponent<Animator>().SetBool("fade", true);
         yield return new WaitForSeconds(TIME_CHANGE_LEVEL);
         SceneManager.LoadScene(currenScene);
-        fadeTransition.GetComponent<Animator>().SetBool("fade", false);
+        // fadeTransition.GetComponent<Animator>().SetBool("fade", false);
     }
 }
