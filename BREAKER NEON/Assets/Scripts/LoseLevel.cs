@@ -9,7 +9,7 @@ public class LoseLevel : MonoBehaviour
     private Health life;
     private Ball ball;
     private int amountDecrease = 1;
-    private static float TIME_CHANGE_LEVEL = 0.4f;
+    private static float TIME_CHANGE_LEVEL = 1f;
     private static float EFFECT_DURATION = 0.3f;
     [SerializeField] GameObject ballHitDownCollider;
     // [SerializeField] GameObject fadeTransition;
@@ -22,7 +22,7 @@ public class LoseLevel : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.gameObject.name.Equals("Ball"))
+        if (col.gameObject.tag.Equals("Ball"))
         {
             life.substractLife(amountDecrease);
             Invoke(nameof(resetBall), 1f);
@@ -54,9 +54,7 @@ public class LoseLevel : MonoBehaviour
     IEnumerator fadeEffect(int currenScene)
     {
         ball.freezeBall();
-        // fadeTransition.GetComponent<Animator>().SetBool("fade", true);
         yield return new WaitForSeconds(TIME_CHANGE_LEVEL);
         SceneManager.LoadScene(currenScene);
-        // fadeTransition.GetComponent<Animator>().SetBool("fade", false);
     }
 }

@@ -12,9 +12,8 @@ public class BlockLoad : MonoBehaviour
     private Ball ball;
     private static int LAST_LEVEL = 7;
     private static int LOSE_WIN_LEVEL = 1;
-    private static float TIME_CHANGE_LEVEL = 0.4f;
-
-    // [SerializeField] GameObject fadeTransition;
+    private static float TIME_CHANGE_LEVEL = 1f;
+    [SerializeField] GameObject levelComplete;
 
     private void Awake()
     {
@@ -42,27 +41,24 @@ public class BlockLoad : MonoBehaviour
         if (amountBlock <= 0)
         {
             int nextLevel = gameManager.GetActualLevel();
-            if (nextLevel < LAST_LEVEL)
+            nextLevel++;
+            if (nextLevel <= LAST_LEVEL)
             {
-                nextLevel++;
-                StartCoroutine(fadeEffect(nextLevel));
-                // SceneManager.LoadScene(nextLevel);
+                StartCoroutine(screenLevelComplete(nextLevel));
             }
             else
             {
-                StartCoroutine(fadeEffect(LOSE_WIN_LEVEL));
-                // SceneManager.LoadScene("LOSE-WIN");
+                StartCoroutine(screenLevelComplete(LOSE_WIN_LEVEL));
             }
         }
     }
 
-    IEnumerator fadeEffect(int currenScene)
+    IEnumerator screenLevelComplete(int currenScene)
     {
         ball.freezeBall();
-        // Instantiate(fadeTransition,transform.position,Quaternion.identity);
-        // fadeTransition.GetComponent<Animator>().SetBool("fade", true);
+        levelComplete.SetActive(true);
         yield return new WaitForSeconds(TIME_CHANGE_LEVEL);
         SceneManager.LoadScene(currenScene);
-        // fadeTransition.GetComponent<Animator>().SetBool("fade", false);
+        levelComplete.SetActive(false);
     }
 }

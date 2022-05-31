@@ -7,7 +7,7 @@ public class Block : MonoBehaviour
     [SerializeField] int scoreBlock = 0;
     private Score scoreManager;
     [SerializeField] GameObject deadEffect;
-    [SerializeField] GameObject soundDead; 
+    [SerializeField] GameObject soundDead;
 
     private void Awake()
     {
@@ -28,15 +28,14 @@ public class Block : MonoBehaviour
             Instantiate(deadEffect, transform.position, Quaternion.identity);
             scoreManager.incrementScore(scoreBlock);
             blockLoad.blocksSubstract();
-            Instantiate(soundDead, transform.position,Quaternion.identity);
+            Instantiate(soundDead, transform.position, Quaternion.identity);
             Destroy(this.gameObject);
         }
-       
     }
 
     private void OnCollisionEnter2D(Collision2D col)
     {
-        if (col.gameObject.name == "Ball")
+        if (col.gameObject.tag.Equals("Ball"))
         {
             hit();
         }
