@@ -8,7 +8,7 @@ using TMPro;
 public class Health : MonoBehaviour
 {
     private TextMeshProUGUI lifetText;
-    private int totalLife = 10;
+    private int totalLife = 20;
     private void Awake()
     {
         lifetText = GetComponent<TextMeshProUGUI>();

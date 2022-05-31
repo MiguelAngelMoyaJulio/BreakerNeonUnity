@@ -9,14 +9,17 @@ public class BlockLoad : MonoBehaviour
 {
     public int amountBlock;
     private GameManager gameManager;
+    private Ball ball;
     private static int LAST_LEVEL = 7;
     private static int LOSE_WIN_LEVEL = 1;
-    private static float TIME_CHANGE_LEVEL = 0.5f;
+    private static float TIME_CHANGE_LEVEL = 1f;
+
     [SerializeField] GameObject fadeTransition;
 
     private void Awake()
     {
         gameManager = FindObjectOfType<GameManager>();
+        ball = FindObjectOfType<Ball>();
     }
 
     private void Update()
@@ -55,8 +58,11 @@ public class BlockLoad : MonoBehaviour
 
     IEnumerator fadeEffect(int currenScene)
     {
-        Instantiate(fadeTransition,transform.position,Quaternion.identity);
+        ball.freezeBall();
+        // Instantiate(fadeTransition,transform.position,Quaternion.identity);
+        fadeTransition.GetComponent<Animator>().SetBool("fade", true);
         yield return new WaitForSeconds(TIME_CHANGE_LEVEL);
         SceneManager.LoadScene(currenScene);
+        fadeTransition.GetComponent<Animator>().SetBool("fade", false);
     }
 }

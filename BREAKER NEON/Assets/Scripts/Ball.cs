@@ -43,4 +43,9 @@ public class Ball : MonoBehaviour
     {
         Instantiate(soundHit,transform.position,Quaternion.identity);
     }
+
+    public void freezeBall()
+    {
+        rb.velocity = new Vector2(0, 0);
+    }
 }

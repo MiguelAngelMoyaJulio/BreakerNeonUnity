@@ -9,12 +9,12 @@ public class LoseLevel : MonoBehaviour
     private Health life;
     private Ball ball;
     private int amountDecrease = 1;
-    private static float TIME_CHANGE_LEVEL = 0.5f;
-    private static float EFFECT_DURATION = 0.2f;
-    [SerializeField] GameObject effectLose;
-    // [SerializeField] GameObject fadeTransition;
+    private static float TIME_CHANGE_LEVEL = 1f;
+    private static float EFFECT_DURATION = 0.3f;
+    [SerializeField] GameObject ballHitDownCollider;
+    [SerializeField] GameObject fadeTransition;
 
-private void Awake()
+    private void Awake()
     {
         ball = FindObjectOfType<Ball>();
         life = FindObjectOfType<Health>();
@@ -26,8 +26,8 @@ private void Awake()
         {
             life.substractLife(amountDecrease);
             Invoke(nameof(resetBall), 1f);
-            effectLose.SetActive(true);
-            StartCoroutine(effectDuration(effectLose));
+            ballHitDownCollider.SetActive(true);
+            StartCoroutine(effectDuration(ballHitDownCollider));
             if (life.getTotalLife() <= 0)
             {
                 StartCoroutine(fadeEffect(1));
@@ -50,10 +50,13 @@ private void Awake()
         yield return new WaitForSeconds(EFFECT_DURATION);
         effect.SetActive(false);
     }
-    
+
     IEnumerator fadeEffect(int currenScene)
     {
+        ball.freezeBall();
+        fadeTransition.GetComponent<Animator>().SetBool("fade", true);
         yield return new WaitForSeconds(TIME_CHANGE_LEVEL);
         SceneManager.LoadScene(currenScene);
+        fadeTransition.GetComponent<Animator>().SetBool("fade", false);
     }
 }
