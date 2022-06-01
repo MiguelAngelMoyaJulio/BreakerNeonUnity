@@ -313,9 +313,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'q -  pause game
 
-    e -  unpause game
-
-    j -  reset ballt'
+    j -  reset ball'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d90120ccf13ce0546b99a3abaccc193e, type: 2}
   m_sharedMaterial: {fileID: 855723858710928555, guid: d90120ccf13ce0546b99a3abaccc193e,
