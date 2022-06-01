@@ -63,20 +63,24 @@ public class GameManager : MonoBehaviour
         {
             TextMeshProUGUI scoreCanvas = GameObject.Find("score").GetComponent<TextMeshProUGUI>();
             TextMeshProUGUI livesCanvas = GameObject.Find("lives").GetComponent<TextMeshProUGUI>();
+            TextMeshProUGUI blockCanvas = GameObject.Find("blocks").GetComponent<TextMeshProUGUI>();
             TextMeshProUGUI ScoreNumberCanvas = GameObject.Find("scoreNumber").GetComponent<TextMeshProUGUI>();
             TextMeshProUGUI LivesNumberCanvas = GameObject.Find("livesNumber").GetComponent<TextMeshProUGUI>();
-            bool titles = scoreCanvas.text.Equals("") && livesCanvas.text.Equals("");
-            bool titlesNumber = ScoreNumberCanvas.text.Equals("") && LivesNumberCanvas.text.Equals("");
+            TextMeshProUGUI BlockNumberCanvas = GameObject.Find("blocksAmount").GetComponent<TextMeshProUGUI>();
+            bool titles = scoreCanvas.text.Equals("") && livesCanvas.text.Equals("")&& blockCanvas.text.Equals("");
+            bool titlesNumber = ScoreNumberCanvas.text.Equals("") && LivesNumberCanvas.text.Equals("")&& !BlockNumberCanvas.text.Equals("");
             if (titles && titlesNumber)
             {
-                this.lives = 20;
+                this.lives = 2;
                 this.finalScore = 0;
                 FindObjectOfType<Score>().SetTotalScore(this.finalScore);
                 FindObjectOfType<Health>().SetHealth(this.lives);
                 scoreCanvas.text = "Score";
                 livesCanvas.text = "Lives";
+                blockCanvas.text = "Blocks";
                 ScoreNumberCanvas.text = this.finalScore.ToString();
                 LivesNumberCanvas.text = this.lives.ToString();
+                BlockNumberCanvas.text = 0.ToString();
             }
         }
     }
@@ -85,12 +89,16 @@ public class GameManager : MonoBehaviour
     {
         TextMeshProUGUI score = FindObjectOfType<Score>().GetComponent<TextMeshProUGUI>();
         TextMeshProUGUI life = FindObjectOfType<Health>().GetComponent<TextMeshProUGUI>();
+        TextMeshProUGUI block = FindObjectOfType<BlockUI>().GetComponent<TextMeshProUGUI>();
         score.text = "";
         life.text = "";
+        block.text = "";
         GameObject textScore = GameObject.Find("score");
         GameObject textLives = GameObject.Find("lives");
+        GameObject textBlock = GameObject.Find("blocks");
         textScore.GetComponent<TextMeshProUGUI>().text = "";
         textLives.GetComponent<TextMeshProUGUI>().text = "";
+        textBlock.GetComponent<TextMeshProUGUI>().text = "";
     }
     
     // funciona si tengo otro canvas dentro del gamemanager
