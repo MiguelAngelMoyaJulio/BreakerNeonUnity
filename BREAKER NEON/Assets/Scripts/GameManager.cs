@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
 {
     public int finalScore = 0;
     private Ball ball;
-    private int lives = 20;
+    private int lives = 15;
     private TextMeshProUGUI textScore;
     private static int LOSE_WIN_SCENE = 1;
     private static int LEVEL_ONE_SCENE = 3;
@@ -71,7 +71,7 @@ public class GameManager : MonoBehaviour
             bool titlesNumber = ScoreNumberCanvas.text.Equals("") && LivesNumberCanvas.text.Equals("")&& !BlockNumberCanvas.text.Equals("");
             if (titles && titlesNumber)
             {
-                this.lives = 2;
+                this.lives = 15;
                 this.finalScore = 0;
                 FindObjectOfType<Score>().SetTotalScore(this.finalScore);
                 FindObjectOfType<Health>().SetHealth(this.lives);
