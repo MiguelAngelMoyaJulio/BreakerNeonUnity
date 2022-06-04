@@ -95,7 +95,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c37598a0cfc5b64696966f87f60d3ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 4
+  health: 1
   scoreBlock: 65
   deadEffect: {fileID: 1281838194041742531, guid: f0573f0c77e66114c937d10158db1cf3,
     type: 3}
